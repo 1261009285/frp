@@ -2,7 +2,7 @@ services:
   frps:
     entry: ./frps -c ./frps.ini
     ports:
-      - name: frp-tls
-        protocol: tcp
-        internal: 7000
-        external: 443
+      - name: frp-tunnel
+        protocol: tcp        # 明确告诉 Zeabur 这是 TCP 流量，不是 HTTP
+        internal: 7000       # 容器内的 frps 监听端口
+        external: 443        # 让外部访问走 443 端口
