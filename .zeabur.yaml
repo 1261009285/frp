@@ -1,0 +1,8 @@
+services:
+  frps:
+    entry: ./frps -c ./frps.ini
+    ports:
+      - name: frp-tls
+        protocol: tcp
+        internal: 7000
+        external: 443
