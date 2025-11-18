@@ -1,1 +1,1 @@
-start: ./frps -c ./frps.ini
+web: ./frps -c ./frps.ini
