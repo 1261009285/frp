@@ -1,8 +1,23 @@
 services:
   frps:
-    entry: ./frps -c ./frps.ini
+    entry: ./frps -c ./frps.ini     # ✅ Zeabur 启动时运行 frps
     ports:
       - name: frp-tunnel
         protocol: tcp
-        internal: 7000
-        external: 443
+        internal: 7000              # frps 内部监听端口
+        external: 443               # Zeabur 映射给公网访问
+    env:
+      - key: BIND_PORT
+        value: 7000
+      - key: TOKEN
+        value: 123456
+      - key: DASHBOARD_PORT
+        value: 7500
+      - key: DASHBOARD_USER
+        value: admin
+      - key: DASHBOARD_PWD
+        value: 123456
+      - key: VHOST_HTTP_PORT
+        value: 18080
+      - key: VHOST_HTTPS_PORT
+        value: 18443
